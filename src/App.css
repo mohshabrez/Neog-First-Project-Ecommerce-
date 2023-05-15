@@ -1,51 +1,376 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+.App{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.HomePage{
+  background: #606060;
+  background: radial-gradient(at right bottom, #606060, #010101);
+  
+  background-repeat: repeat;
+}
+
+
+.nav{
+  display: grid;
+  gap: 20px;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  background: #010101,;
+  background: linear-gradient( #010101,  #606060,);
+  margin: -5px -20px 10px;
+  height: 100%;
+  opacity: 0.7;
+  
+}
+
+
+.nav img{
+  width: 50px;
+  height: 55px;
+  padding: 10px;
+}
+
+
+.logoName{
+  font-family: 'Pacifico', cursive;
+  color: rgb(246, 108, 3);
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 22px;
+  font-weight: bolder;
+  font-size: x-large;
+  cursor: none;
+  
+}
+
+.searchBar{
+  margin: 15px;
+  width: 37%;
+  font-size:  medium;
+  font-weight: bold;
+  padding: 10px;
+  margin-left: 20%;
+  border-radius: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
-  font-size: 1.4rem;
+.search-btn{
+  padding: 10px;
+  border-radius: 20px;
+  font-size:  medium;
+  font-weight: bold;
+  width: 8%;
 }
 
 .links {
-  display: flex;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  padding: 10px;
+  font-size: large;
+  font-style: italic;
+  font-weight: 500;
 }
 
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.main{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  
+}
+
+
+
+.Homeimage img{
+  position: absolute;
+  top: 100px;
+  right: 35px;
+  width: 80%;
+  height: 60%;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+
+.prev{
+  position: relative;
+  font-size: 50px;
+  top: 120px;
+  left: -418px;
+  width: 30px;
+  cursor: pointer;
+  color: rgb(246, 108, 3);
+}
+
+.next{
+  position: relative;
+  font-size: 50px;
+  top: 58px;
+  left: 588px;
+  width: 30px;
+  cursor: pointer;
+  color: rgb(246, 108, 3);
+}
+
+
+.categorized ul{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: relative;
+  top: 300px;
+  left: 80px;
+  list-style-type: none;
+  padding: 30px;
+}
+
+.categorized h1{
+  position: absolute;
+  top: 480px;
+  right: 420px;
+  bottom: 20px;
+  text-decoration: underline;
+  color: whitesmoke;
+}
+
+.categoryCard{
+  max-width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+  height: 100%;
+  margin: 10px 50px 10px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  cursor: pointer;
+  background: #5a5a5a
+}
+
+.categoryCard:hover{
+  transform: translateY(-20px);
+}
+
+
+.categoryCard  img{
+  width: 100%;
+  height: 60%;
+}
+
+.categoryCard h3{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.categoryLink{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: -500px;
+  margin: -50px;
+  left: 340px;
+  line-height: 2px;
+  color: rgb(246, 108, 3);
+}
+
+.footer h2{
+  font-family: 'Pacifico', cursive;
+}
+
+.socialLinks{
+  display:flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: -500px;
+  margin: -50px;
+  right: 80px;
+  padding: 15px;
+}
+
+.socialLinks img{
+  width: 40px;
+  padding: 5px;
+}
+
+.ProductNavBar{
+    background-color: #ffffff80;
+    font-size: 1.5rem;
+    left: 0;
+    padding: 0.5rem clamp(2rem,8vw,8rem);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1;
+}
+
+.navBar{
+  display: flex;
+  flex-direction: row;
+  float: right;
+}
+
+.logoNameNav{
+  position: absolute;
+  top: -16px;
+  left: -10px;
+  font-family: 'Pacifico', cursive;
+  color: rgb(246, 108, 3);
+  margin-top: 20px;
+  margin-left: 20px;
+  padding: 22px;
+  font-weight: bolder;
+  font-size: x-large;
+
+}
+
+.navBar img{
+  width: 30px;
+  padding: 15px;
+  position: relative;
+  right: 100px;
+}
+
+.productsSection img{
+  width: 100%;
+  height: 200px;
+}
+
+.FiltersSection{
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  padding: 20px;
+}
+
+.formData{
+  padding: 10px;
+  margin: 10px;  
+}
+
+.formData h3{
+  padding: 2px;
+  margin-left: 15px;
+  text-shadow: 2px #8f8e8e;
+}
+
+.formData button{
+  display: flex;
+  flex-direction: row;
+  margin-left: 180px;
+  margin-top: -40px;
+}
+
+.formData li{
+  list-style-type: none;
+}
+
+.ProductListing h1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bolder;
+  font-size:xx-large;
+}
+
+.ULProducts{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px;
+  margin-left: 5px;
+  list-style-type: none;
+  justify-content: space-between;
+}
+
+.ULProducts img{
+  width: 200px;
+  height: 190px;
+}
+
+.productCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.2);
+  width: 225px;
+  height: 375px;
+  padding: 5px;
+  margin-top: 20px;
+  border-radius: 10px;
+  line-height: 10px;
+  justify-content: space-between;
+}
+.productDetails{
+  padding: 10px;
+  margin: 25px;
+}
+.buynow{
+  width: fit-content;
+  background-color:rgb(246, 108, 3);
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding: 7px;
+}
+
+.material-symbols-outlined{
+  display: flex;
+  margin-top: -50px ;
+  margin-left: 180px;
+}
+
+.stocks{
+  display: flex;
+  flex-direction: column;
+  float: right;
+  position: relative;
+  bottom: 55px;
+  right: -10px;
+  line-height: 14px;
+}
+
+.searchElements{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.bar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.searchpagebar{
+  margin: 15px;
+  width: 45%;
+  font-size:  medium;
+  font-weight: bold;
+  padding: 10px;
+  margin-left: 10%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.searchpagebtn{
+  padding: 10px;
+  border-radius: 20px;
+  font-size:  medium;
+  font-weight: bold;
+  width: 8%;
 }

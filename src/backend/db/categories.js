@@ -8,20 +8,22 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "fiction",
+    categoryName: "BEST SELLERS",
     description:
-      "literature in the form of prose, especially novels, that describes imaginary events and people",
+      "Here, Is our well Known collections of travellers which they prefer alot",
+      image: "https://th.bing.com/th/id/OIP.jtc6ZhZ-yUXp9NDUgZwNYwHaEK?w=327&h=184&c=7&r=0&o=5&dpr=1.5&pid=1.7"
   },
   {
     _id: uuid(),
-    categoryName: "non-fiction",
+    categoryName: "OUR COLLECTION",
     description:
-      "Non-fiction is writing that gives information or describes real events, rather than telling a story.",
+      "Explore more collections and products of us",
+      image:"https://upgradedpoints.com/wp-content/uploads/2019/04/Travel-Accessories-And-Products.jpg"
   },
   {
     _id: uuid(),
-    categoryName: "horror",
-    description:
-      "Meant to cause discomfort and fear for both the character and readers, horror writers often make use of supernatural and paranormal elements in morbid stories that are sometimes a little too realistic.",
-  },
+    categoryName:"CATEGORIES",
+    description:"Explore by Category",
+    image:"https://th.bing.com/th/id/OIP.ZYOrfJxOLJoifsD9QIBlJgHaFj?w=237&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7"
+  }
 ];

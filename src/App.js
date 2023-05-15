@@ -1,42 +1,22 @@
 import "./App.css";
-import logo from "./logo.png";
+import { HomePage } from "./Pages/HomePage";
+import { ProductPage } from "./Pages/ProductPage";
+import { RootLayout } from "./Pages/RootLayout";
+import {Routes, Route} from "react-router-dom"
+import { SearchBar } from "./Pages/SearchBar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} alt="mockBee logo" width="180" height="180" />
-        <h1 className="brand-title">
-          Welcome to <span>mockBee!</span>
-        </h1>
-        <p className="brand-description">
-          Get started by editing <code>src/App.js</code>
-        </p>
-        <div className="links">
-          <a
-            href="https://mockbee.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Explore mockBee
-          </a>
-          <a
-            href="https://mockbee.netlify.app/docs/api/introduction"
-            target="_blank"
-            rel="noreferrer"
-          >
-            API Documentation
-          </a>
-          <a
-            href="https://github.com/neogcamp/mockBee"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Contribute
-          </a>
-        </div>
-      </header>
+       <Routes>
+        <Route path="/" element={<RootLayout/>}/>
+        <Route index element={<HomePage />} />
+          <Route path="HomePage" element={<HomePage />} />
+          <Route path="ProductPage" element={<ProductPage/>}/>
+          <Route path="SearchBar" element={<SearchBar/>}/>
+      </Routes>
     </div>
+     
   );
 }
 
