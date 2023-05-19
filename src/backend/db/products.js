@@ -16,6 +16,11 @@ export const products = [
       deliveryTime: false,
       inStock: true,
       brand: "Osprey",
+      originalPrice: 3200,
+      count: 1,
+      wish: false,
+      percentage:"21.87",
+      star: "4.5"
     },
     {
       _id: uuid(),
@@ -26,6 +31,11 @@ export const products = [
       deliveryTime: false,
       inStock: true,
       brand: "Marmot",
+      originalPrice: 4200,
+      count: 1,
+      wish: false,
+      percentage:"28.58",
+      star: "4.3"
     },
     {
       _id: uuid(),
@@ -36,6 +46,11 @@ export const products = [
       deliveryTime: false,
       inStock: false,
       brand: "North Face",
+      originalPrice: 2200,
+      count: 1,
+      wish: false,
+      percentage:"50",
+      star: "4.8"
     },
     {
       _id: uuid(),
@@ -46,6 +61,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Merrell",
+      originalPrice: 4500,
+      count: 1,
+      wish: false,
+      percentage:"44.44",
+      star: "4.2"
     },
     {
       _id: uuid(),
@@ -56,6 +76,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Nalgene",
+      originalPrice: 350,
+      count: 1,
+      wish: false,
+      percentage:"28.58",
+      star: "3.9"
     },
     {
       _id: uuid(),
@@ -66,6 +91,11 @@ export const products = [
       deliveryTime: true,
       inStock: false,
       brand: "Ray-Ban",
+      originalPrice: 1200,
+      count: 1,
+      wish: false,
+      percentage:"44.44",
+      star: "4.2"
     },
     {
       _id: uuid(),
@@ -76,6 +106,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "New Era",
+      originalPrice: 750,
+      count: 1,
+      wish: false,
+      percentage:"40",
+      star: "3.5"
     },
     {
       _id: uuid(),
@@ -86,6 +121,11 @@ export const products = [
       deliveryTime: true,
       inStock: false,
       brand: "ShedRain",
+      originalPrice: 470,
+      count: 1,
+      wish: false,
+      percentage:"63.73",
+      star: "3.7"
     },
     {
       _id: uuid(),
@@ -96,6 +136,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Anker",
+      originalPrice: 3270,
+      count: 1,
+      wish: false,
+      percentage:"31.20",
+      star: "4.8"
     },
     {
       _id: uuid(),
@@ -106,6 +151,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Lonely Planet",
+      originalPrice: 930,
+      count: 1,
+      wish: false,
+      percentage:"44.10",
+      star: "4.3"
     },
     {
       _id: uuid(),
@@ -116,6 +166,11 @@ export const products = [
       deliveryTime: false,
       inStock: true,
       brand: "Herschel Supply Co.",
+      originalPrice: 1400,
+      count: 1,
+      wish: false,
+      percentage:"65.20",
+      star: "4.5"
     },
     {
       _id: uuid(),
@@ -126,6 +181,11 @@ export const products = [
       deliveryTime: false,
       inStock: false,
       brand: "Master Lock",
+      originalPrice: 460,
+      count: 1,
+      wish: false,
+      percentage:"32.70",
+      star: "4.1"
     },
     {
       _id: uuid(),
@@ -136,6 +196,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Braun",
+      originalPrice: 1800,
+      count: 1,
+      wish: false,
+      percentage:"44.44",
+      star: "4.5"
     },
     {
       _id: uuid(),
@@ -146,6 +211,11 @@ export const products = [
       deliveryTime: false,
       inStock: true,
       brand: "Oakley",
+      originalPrice: 350,
+      count: 1,
+      wish: false,
+      percentage:"68.67",
+      star: "3.8"
     },
     {
       _id: uuid(),
@@ -156,6 +226,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "LifeProof",
+      originalPrice: 180,
+      count: 1,
+      wish: false,
+      percentage:"44.44",
+      star: "3.6"
     },
     {
       _id: uuid(),
@@ -166,6 +241,11 @@ export const products = [
       deliveryTime: true,
       inStock: false,
       brand: "Anker",
+      originalPrice: 650,
+      count: 1,
+      wish: false,
+      percentage:"20",
+      star: "4.7"
     },
     {
       _id: uuid(),
@@ -176,6 +256,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Etekcity",
+      originalPrice: 760,
+      count: 1,
+      wish: false,
+      percentage:"46.10",
+      star: "3.0"
     },
     {
       _id: uuid(),
@@ -186,6 +271,11 @@ export const products = [
       deliveryTime: true,
       inStock: true,
       brand: "Eagle Creek",
+      originalPrice: 430,
+      count: 1,
+      wish: false,
+      percentage:"25.59",
+      star: "2.5"
     },
     {
       _id: uuid(),
@@ -196,6 +286,11 @@ export const products = [
       deliveryTime: false,
       inStock: false,
       brand: "No Brand",
+      originalPrice: 130,
+      count: 1,
+      wish: false,
+      percentage:"61.54",
+      star: "2.5"
     },
     {
       _id: uuid(),
@@ -206,12 +301,11 @@ export const products = [
       deliveryTime: false,
       inStock: true,
       brand: "Leuchtturm1917",
-    },
-  
-    
-    
-  
-    
+      originalPrice: 220,
+      count: 1,
+      wish: false,
+      percentage:"31.19",
+      star: "2.5"
 
-  
+    },
 ];

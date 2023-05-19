@@ -15,11 +15,11 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <APIprovider>
       <CommerceProvider>
+      <APIprovider>
       <App />
-      </CommerceProvider>
       </APIprovider>
+      </CommerceProvider>
       </BrowserRouter>
   
     

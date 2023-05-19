@@ -37,7 +37,7 @@ export function HomePage(){
             <a className="prev" onClick={prevSlide} >&#10094;</a>
                 <div className="image-container" style={{gridColumn}}>
                     <div className="Homeimage">
-                        <img src={slide} alt="Home Images"/>
+                        <Link to="/ProductPage"><img src={slide} alt="Home Images"/></Link>
                     </div>   
                 </div>
             <a className="next" onClick={nextSlide}>&#10095;</a>
@@ -48,11 +48,11 @@ export function HomePage(){
                     {categories.map((category) => {
                         return(
                             <li key={category?._id}>
-                                <div className="categoryCard">
-                                    <h3>{category?.categoryName}</h3>
+                               <Link to="/ProductPage"><div className="categoryCard">
+                                    <h3 style={{color:"whitesmoke"}}>{category?.categoryName}</h3>
                                     <img src={category?.image} alt="categorizedData"/>
                                     <Link className="categoryLink" style={{color: "whitesmoke", fontWeight:"bolder", padding:"20px"}}>See More</Link>
-                                </div>
+                                </div></Link> 
                             </li>
                         )
                     })}

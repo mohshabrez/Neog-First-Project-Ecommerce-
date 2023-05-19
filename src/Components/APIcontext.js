@@ -1,6 +1,9 @@
 import React from "react"
 import {useState, createContext, useEffect, useContext} from "react"
 import axios from "axios"
+import { UseDispatch } from "../Context/CommerceContext";
+import { ACTIONS } from "../Reducer/CommerceReducer";
+
 
 export const getProducts = async () => {
     const res = await axios.get("/api/products");
@@ -19,24 +22,20 @@ export const getCategories = async () => {
 const APIcontext = createContext(null)
 
 export function APIprovider({children}){
+    const {dispatch} = UseDispatch()
     const[products, setProducts] = useState([])
     const[categories, setCategories] = useState([])
-
-    const initialState = {
-        commerceCategoryData: [],
-        ProductsData: [],
-        toSort: null,
-        inStock:false,
-        DeliveryTime: false,
-        bestSellers: false,
-        oldData: [],
-        brandedProducts: false,
-        personalizedDesigns: false
-    
-    }
+   
     useEffect(() => {
         (async () => {
             try {
+                let details = await getProducts()
+                if(details){
+                    dispatch({
+                        type: ACTIONS.INITIAL,
+                        payLoad: details
+                    })
+                }
                 setProducts(await getProducts())
             }
 
@@ -59,7 +58,7 @@ export function APIprovider({children}){
    
 
     return(
-        <APIcontext.Provider value={{products,categories, initialState}}>
+        <APIcontext.Provider value={{products,categories}}>
             {children}
         </APIcontext.Provider>
     )
