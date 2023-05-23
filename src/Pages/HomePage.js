@@ -10,7 +10,7 @@ import { Footer } from "./Footer";
 
 
 export function HomePage(){
-    const {categories, products} = UseCommerce()
+    const {categories} = UseCommerce()
     const slides=[footware, gear, rainwear]
     const[count, setCount] = useState(0);
     const [slide, setSlide] = useState(slides[count]);

@@ -1,6 +1,31 @@
 import { ProductNavBar } from "./ProductNavBar";
+import {ACTIONS} from "../Reducer/CommerceReducer"
+import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
+import { UseCart } from "../Context/CartContext";
+import { UseAuth } from "../Context/AuthContext";
+import { useNavigate } from "react-router";
 
-export function ProductCard({_id, name, star, brand, price, originalPrice,percentage, inStock, image, categoryName, deliveryTime}){
+
+export function ProductCard(product){
+    const { name, star, brand, price, originalPrice,percentage,  image,} = product;
+    const {state} = UseCommerce()
+    const {dispatch} = UseDispatch()
+    const {addToCartHandler} = UseCart()
+    const {isAuth} = UseAuth()
+
+    const navigate = useNavigate()
+
+    const isInCart = state.cartItems.some((cart) => cart?._id === product?._id)
+    const isInWish = state.wishList.some((wish) => wish?._id === product?._id)
+
+
+    const addWish = (product) => {
+        dispatch({
+            type: ACTIONS.ADDWISH,
+            payLoad: product
+        })
+    }
+
     return(
         <>
         <ProductNavBar/>
@@ -36,8 +61,8 @@ export function ProductCard({_id, name, star, brand, price, originalPrice,percen
                     </li>
                 </div>
                 <div className="BtnsDetails">
-                    <button>Buy Now</button>
-                    <button>Add to cart</button>
+                    <button onClick={()=> isAuth ? isInCart ? navigate("/CartPage") : addToCartHandler(product): navigate("/login")}>{ isInCart ? "Go to Cart" :"Add To Cart"}</button>
+                    <button onClick={()=> isAuth ? isInWish ? navigate("/Wishlist") : addWish(product): navigate("/login")}>{isInWish? "Go to Wish" :"Add to Wishlist"}</button>
                 </div>
             </div>
         </div>

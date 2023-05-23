@@ -15,7 +15,7 @@ export function NavBar(){
             <NavLink to="/ProductPage"><img src={Product} alt="products"/></NavLink>
             <NavLink to="/CartPage"><img src={cart} alt="cart"/></NavLink>
             <NavLink to="/Wishlist"><img src={wish} alt="wish"/></NavLink>
-            <NavLink><img src={login} alt="Login"/></NavLink>
+            <NavLink to="/login"><img src={login} alt="Login"/></NavLink>
             </section>
             </nav>
         </div>

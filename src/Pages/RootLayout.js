@@ -5,6 +5,7 @@ import cart from "../Images/trolley.png"
 import login from "../Images/profile.png"
 import wish from '../Images/wishlist.png'
 import { NavLink, Link, Outlet } from "react-router-dom"
+
 export function RootLayout(){
     return(
         <>
@@ -15,7 +16,7 @@ export function RootLayout(){
             <NavLink to="/ProductPage"><img src={Product} alt="products"/></NavLink>
             <NavLink to="/CartPage"><img src={cart} alt="cart"/></NavLink>
             <NavLink to="/Wishlist"><img src={wish} alt="wish"/></NavLink>
-            <NavLink><img src={login} alt="Login"/></NavLink>
+            <NavLink to="/login"><img src={login} alt="Login"/></NavLink>
             </nav>
             <section>
                 <NavLink to="/SearchBar">

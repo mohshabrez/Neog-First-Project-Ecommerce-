@@ -1,33 +1,20 @@
 import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
 import { ProductNavBar } from "./ProductNavBar";
 import {ACTIONS} from "../Reducer/CommerceReducer"
-import {Footer} from "../Pages/Footer"
-
+import { UseCart } from "../Context/CartContext";
+import { useNavigate } from "react-router";
 
 
 export function CartPage(){
     const {state} = UseCommerce()
+    const {incrementHandler, decrementHandler} = UseCart()
     const{dispatch} = UseDispatch()
-    const plus = (cart) =>{
-        dispatch({
-            type:ACTIONS.PLUSCOUNT,
-            payLoad: cart
-        })
-        dispatch({
-            type: ACTIONS.PLUS,
-            payLoad: cart
-        })
-    } 
-    const minus = (cart) => {
-        dispatch({
-            type:ACTIONS.MINUSCOUNT,
-            payLoad:cart
-        })
-        dispatch({
-            type:ACTIONS.MINUS,
-            payLoad:cart
-        })
-    }
+    const navigate = useNavigate()
+
+
+    var TotalPrice =state.cartItems.reduce((acc, curr) => (curr.price*curr.qty) + acc, 0)
+    var DiscountPrice = state.cartItems.reduce((acc, curr) => ((curr.originalPrice - curr.price)*curr.qty) + acc, 0)
+
     const removeFromCart = (cart) => {
         dispatch({
             type:ACTIONS.REMOVEFROMCART,
@@ -55,6 +42,7 @@ export function CartPage(){
             state.cartItems.length > 0 ? (
             <ul>
                 {state.cartItems.map((cart) => {
+                    const isInWish = state.wishList.some((wish) => wish?._id === cart?._id)
                     return(
                         <div className="cartDiv">
                             <div className="cartCard">
@@ -66,13 +54,13 @@ export function CartPage(){
                                         <p style={{fontStyle:"italic", fontWeight:"bold", marginTop:"-10px"}}>₹{cart?.price}</p>
                                         <p style={{fontStyle:"italic", marginTop:"-10px",color:"grey", textDecoration:"line-through"}}>₹{cart?.originalPrice}</p>
                                         <div className="calbtns">
-                                        <button disabled={cart?.count === 1}  onClick={()=>minus(cart)}>-</button><span style={{fontWeight:"bolder", padding:"4px"}}>{cart?.count}</span><button onClick={()=>plus(cart)}>+</button>
+                                        <button disabled={cart?.qty === 1} onClick={()=>decrementHandler(cart)}>-</button><span style={{fontWeight:"bolder", padding:"4px"}}>{cart?.qty}</span><button onClick={()=>incrementHandler(cart)}>+</button>
                                         </div>
                                     </div>
                                     <div className="Cartline"></div>
                                     <div className="cardBtns">
                                     <button className="AtoCart" onClick={()=> removeFromCart(cart)}>REMOVE</button>
-                                    <button className="Atowish" onClick={()=> moveCartToWish(cart)}>MOVE TO WISHLIST</button>
+                                    <button className="Atowish" onClick={()=> isInWish ? navigate("/Wishlist") :moveCartToWish(cart)}>{isInWish? "Go to Wish" :"Move to Wishlist"}</button>
                                     </div>
                                 </li>
                             </div>
@@ -88,11 +76,11 @@ export function CartPage(){
                <div className="checkoutDetails">
                 <ul>
                     <li>Price</li>
-                    <li>{state.price}</li>
+                    <li>{TotalPrice}</li>
                 </ul>
                 <ul>
                     <li>Discount</li>
-                    <li style={{marginLeft:"-1.6rem"}}>{state.originalPrice}</li>
+                    <li style={{marginLeft:"-1.6rem"}}>{DiscountPrice}</li>
                 </ul>
                 <ul>
                     <li>Delivery Charges</li>
@@ -101,10 +89,10 @@ export function CartPage(){
                 <div className="checkLine" style={{ width: "130%", marginLeft:"-2.2rem"}}></div>
                 <ul>
                     <li><h3>Total Amount</h3></li>
-                    <li style={{marginLeft:"-2.3rem"}}><h3>₹{state.price}</h3></li>
+                    <li style={{marginLeft:"-2.3rem"}}><h3>₹{TotalPrice}</h3></li>
                 </ul>
                 <div className="checkLine" style={{ width: "130%", marginLeft:"-2.2rem"}}></div>
-                <p style={{fontWeight:"bold"}}>You will save ₹{state.originalPrice} on this order </p>
+                <p style={{fontWeight:"bold"}}>You will save ₹{DiscountPrice} on this order </p>
                 <button className="checkOut">Check Out</button>
             </div>
             </div>

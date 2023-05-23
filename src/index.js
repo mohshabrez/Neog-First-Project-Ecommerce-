@@ -6,7 +6,8 @@ import App from "./App";
 import { CommerceProvider } from "./Context/CommerceContext";
 import { makeServer } from "./server";
 import { APIprovider } from "./Components/APIcontext";
-
+import { AuthProvider } from "./Context/AuthContext";
+import { CartProvider } from "./Context/CartContext";
 
 
 // Call make Server
@@ -14,13 +15,17 @@ makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter>   
+    <AuthProvider>
       <CommerceProvider>
-      <APIprovider>
-      <App />
-      </APIprovider>
+        <CartProvider>
+          <APIprovider>
+          <App />
+          </APIprovider>
+        </CartProvider>
       </CommerceProvider>
-      </BrowserRouter>
+    </AuthProvider> 
+    </BrowserRouter>
   
     
   </React.StrictMode>,

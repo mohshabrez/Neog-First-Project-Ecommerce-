@@ -1,11 +1,15 @@
 import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
 import { ProductNavBar } from "./ProductNavBar";
 import {ACTIONS} from "../Reducer/CommerceReducer"
-import { Link } from "react-router-dom";
-import { products } from "../backend/db/products";
+import { Link, useNavigate } from "react-router-dom";
+import { UseCart } from "../Context/CartContext";
+import { UseAuth } from "../Context/AuthContext";
+
 
 export function ProductPage(){
- 
+    const navigate = useNavigate()
+    const {isAuth} = UseAuth()
+    const {addToCartHandler} = UseCart()
     const { state} = UseCommerce()
     const {dispatch} = UseDispatch()
     
@@ -128,20 +132,6 @@ export function ProductPage(){
         }
     }
 
-    const AtoCart = (product) => {
-        dispatch({
-            type:ACTIONS.ADDCART,
-            payLoad: product
-        })
-    }
-
-    // const AtoWish = (product) => {
-    //     dispatch({
-    //         type:ACTIONS.ADDWISH,
-    //         payLoad: product
-    //     })
-    // }
-
     const favClick = (product) => {
         dispatch({
             type: ACTIONS.ADDWISH,
@@ -234,6 +224,8 @@ export function ProductPage(){
                 <ul>{filteredData.length > 0 ? (
                     <div className="ULProducts">
                     {filteredData.map((product) => {
+                        const isInCart = state.cartItems.some((cart) => cart?._id === product?._id)
+                        const isInWish = state.wishList.some((wish) => wish?._id === product?._id)
                         return(
                             <li key={product?._id}>
                                 <div className="productCard">
@@ -244,13 +236,10 @@ export function ProductPage(){
                                         <h4 style={{fontSize:"larger" ,marginBottom:"28px"}}>{product?.name}</h4>
                                         <p style={{fontStyle:"italic", fontWeight:"bold", marginTop:"-6px"}}>₹{product?.price}</p>
                                         <p style={{fontStyle:"italic", marginTop:"-27px", marginLeft:"47px",color:"grey", textDecoration:"line-through"}}>₹{product?.originalPrice}</p>
-                                        <p className="material-symbols-outlined" onClick={()=>favClick(product)}><svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill={product?.wish ? "rgb(246, 108, 3)" : "#C0C0C0"}  class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                        <p className="material-symbols-outlined" onClick={()=> isAuth ? isInWish ? navigate("/Wishlist"): favClick(product): navigate("/login")}><svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill={product?.wish ? "rgb(246, 108, 3)" : "#C0C0C0"}  class="bi bi-heart-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                         </svg></p>
-                                        {/* <Link to=""><p className="material-symbols-outlined" onClick={()=>favClick(product)} style={{backgroundColor: product?.wish ? "#6a5acd": "", borderRadius:"50px"}}>favorite</p></Link> */}
-                                        <button className="AtoCart" onClick={()=>AtoCart(product)} style={{backgroundColor:!product.inStock ? "rgb(203, 164, 133)": "rgb(246, 108, 3)" }} disabled={!product.inStock}>Add to Cart</button>
-                                        {/* <button className="Atowish" onClick={()=>AtoWish(product)}>Add to Wishlist</button> */}
-                                        
+                                        <button className="AtoCart" onClick={()=> isAuth ? isInCart ? navigate("/CartPage") : addToCartHandler(product): navigate("/login")} style={{backgroundColor:!product.inStock ? "rgb(203, 164, 133)": "rgb(246, 108, 3)" }} disabled={!product.inStock}>{ isInCart ? "Go to Cart" :"Add To Cart"}</button>
                                         <div className="stocks">
                                              <p style={{color: `${product?.inStock ? "#32cd32": "red"}`}}>{product?.inStock ? "InStock" : "Out Of Stock"}</p>
                                              <p  style={{color: `${product?.deliveryTime ? "red": ""}`, marginTop:"-10px"}}>{product?.deliveryTime ? "Fast Delivery" : ""}</p>

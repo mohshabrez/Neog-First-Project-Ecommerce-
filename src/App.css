@@ -3,12 +3,16 @@
 
 .App{
   font-family: 'Roboto Condensed', sans-serif;
+  caret-color: "transparent"
+}
+
+body{
+  caret-color: "transparent"
 }
 
 .HomePage{
   background: #606060;
   background: radial-gradient(at right bottom, #606060, #010101);
-  
   background-repeat: repeat;
 }
 
@@ -615,4 +619,172 @@
   color: white;
   font-size:larger;
   border-radius: 30px;
+}
+
+.loginPage{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+.logoset h1{
+  font-family: 'Pacifico', cursive;
+  color: rgb(13, 201, 230);
+  margin-top: 20px;
+  margin-left: 20px;
+  font-weight: bolder;
+  font-size: xx-large;
+  text-decoration: underline;
+}
+
+
+.logoset{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 140px;
+  margin-top: 120px;
+  box-shadow:rgba(90, 90, 90, 0) 0px 1px 5px; 
+  border-radius: 20px;
+  width:22rem;
+}
+
+.logoset img{
+  width: 200px;
+  height: 150px;
+}
+
+.loginCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  height: 25rem;
+  margin-top: 150px;
+  margin-left: -60px;
+  box-shadow:rgba(90, 90, 90, 0.2) 0px 10px 15px; 
+}
+
+.formLoginData{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.formLoginData div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  list-style-type: none;
+  line-height: 50px;
+  overflow-wrap: break-word;
+  font-size: larger;
+  padding: 5px;
+}
+
+.formLoginData div input{
+  padding: 5px;
+  border-radius: 8px;
+  width: 250px;
+}
+
+.formLoginData div input:hover{
+  border: 2px solid rgb(13, 172, 234);
+}
+
+
+.formLoginData button{
+  width: max-content;
+  padding: 8px;
+  margin-top: 20px;
+  margin-left: 8px;
+  border-radius: 8px;
+  background-color:rgb(13, 201, 230) ;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
+}
+
+.signUp{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+}
+
+.singuplogo h1{
+  font-family: 'Pacifico', cursive;
+  color: rgb(13, 201, 230);
+  margin-top: 20px;
+  margin-left: 20px;
+  font-weight: bolder;
+  font-size: xx-large;
+  cursor: none;
+  text-decoration: underline;
+}
+
+.singuplogo h3{
+  margin-top: 20px;
+  margin-left: 70px;
+  font-weight: bolder;
+  font-size: large;
+  cursor: none;
+}
+
+.singuplogo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 140px;
+  margin-top: 120px;
+  box-shadow:rgba(90, 90, 90, 0) 0px 10px 25px; 
+  border-radius: 20px;
+  width:22rem;
+}
+
+.singuplogo img{
+  width: 200px;
+  height: 150px;
+}
+
+.signupForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  height: 34rem;
+  margin-top: 90px;
+  margin-left: -60px;
+  box-shadow:rgba(90, 90, 90, 0.1) 0px 10px 15px; 
+}
+
+
+.profileDetails{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.loggedinCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30rem;
+  height: 25rem;
+  margin-top: 130px;
+  margin-left: -60px;
+  box-shadow:rgba(90, 90, 90, 0) 0px 10px 15px;
+}
+
+.profileDetails button{
+  width: max-content;
+  padding: 8px;
+  margin-top: 20px;
+  margin-left: 8px;
+  border-radius: 8px;
+  background-color:rgb(13, 201, 230) ;
+  color: white;
+  font-size: medium;
+  cursor: pointer;
 }

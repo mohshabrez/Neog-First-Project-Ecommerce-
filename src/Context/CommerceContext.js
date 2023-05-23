@@ -19,6 +19,7 @@ export const getCategories = async () => {
 }
 
 
+
  const CommerceContext = createContext(null)
  const dispatchContext = createContext(null)
 
@@ -63,6 +64,10 @@ export function CommerceProvider({children}){
             }
         })();
     },[])
+
+    
+
+
     const initialState = {
         commerceCategoryData: [],
         ProductsData: [],
@@ -78,7 +83,7 @@ export function CommerceProvider({children}){
         originalPrice:0,
         count:1,
         wishList:[],
-        wishlistref: false
+        wishlistref: false,
     }
     const [state, dispatch] = useReducer(commerceReducer, initialState)
     return(

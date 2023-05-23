@@ -1,4 +1,3 @@
-import { products } from "../backend/db/products"
 
 
 export const ACTIONS = {
@@ -25,12 +24,24 @@ export const ACTIONS = {
     MINUSCOUNT:"minusc",
     REMOVEFROMCART:"removefromcart",
     REMOVEFROMWISH:"removefromwish",
-    REMOVEFROMFAVWISH:"removefromfavwish"
-
+    REMOVEFROMFAVWISH:"removefromfavwish",
+    USERINITIAL:"userinitial",
+    ADDTOCART:"addtocart",
+    INCREMENT:"increment",
+    DECREMENT:"decrement"
 }
 
 export function commerceReducer(state, action){
     switch(action.type){
+        case ACTIONS.ADDTOCART:{
+            return {...state, cartItems:action.payLoad}
+        }
+        case ACTIONS.INCREMENT:{
+            return{...state, cartItems: [...action.payLoad]}
+        }
+        case ACTIONS.DECREMENT:{
+            return{...state, cartItems: [...action.payLoad]}
+        }
         case ACTIONS.INITIAL:{
             return {...state, ProductsData:[...action.payLoad], oldData:[...action.payLoad]}
         }
@@ -49,7 +60,7 @@ export function commerceReducer(state, action){
             return {...state,ProductsData: state.ProductsData ,[action.payLoad]: false}
         }
         case ACTIONS.PRICE:{
-            const filteredData = state.ProductsData.filter((product) => product.price <= action.payLoad)
+            const filteredData = state.ProductsData.filter((product) => product.price > action.payLoad)
             return {...state, ProductsData:[...filteredData] }
         }
         case ACTIONS.INSTOCK:{
@@ -91,6 +102,7 @@ export function commerceReducer(state, action){
         case ACTIONS.ADDCART:{
             const discountAdding = (state.originalPrice)+ (action.payLoad.price -action.payLoad.originalPrice);        
             const adding = state.price+action.payLoad.price
+            console.log(action.payLoad)
             const filteredData = state.ProductsData.find((product)=> product?._id === action.payLoad?._id )
             return{...state, price: adding, originalPrice:discountAdding, cartItems:[...state.cartItems,{...filteredData}]}
         }
@@ -113,6 +125,7 @@ export function commerceReducer(state, action){
         }
         case ACTIONS.PLUSCOUNT:{
             const filteredData = state.cartItems.find((product) => product?._id === action.payLoad?._id)
+            console.log(state.cartItems.find((product) => product?._id === action.payLoad?._id))
             if(filteredData){
                return {...state,  cartItems: state.cartItems.map((cart) => cart?._id === filteredData?._id ? {...cart, count:cart.count+1} : cart) }
             }
