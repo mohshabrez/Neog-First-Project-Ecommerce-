@@ -15,8 +15,8 @@ export function Footer(){
             <p>© 2023 TrAvLo.Co</p>
         </div>
          <div className="socialLinks">
-            <img src={github} alt="Github"/>
-            <img src={linkedin} alt="linkedin"/>
+            <a href="https://github.com/mohshabrez"><img src={github} alt="Github"/></a>
+            <a href="https://www.linkedin.com/in/g-shabrez-785362159/"><img src={linkedin} alt="linkedin"/></a>
             <img src={insta} alt="InstaGram"/>
             <img src={whtsapp} alt="Whatsapp"/>
             <img src={twitter} alt="Twitter"/>

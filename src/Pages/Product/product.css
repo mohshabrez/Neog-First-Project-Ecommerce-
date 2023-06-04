@@ -57,6 +57,14 @@
   height: 190px;
 }
 
+.ULProducts img:hover{
+  transform: scale(1.3);
+}
+
+.bestSellerImg img:hover{
+  transform: scale(1.3);
+}
+
 .productCard{
   display: flex;
   flex-direction: column;
