@@ -1,12 +1,15 @@
-import travel from "../Images/travel.gif"
-import backpack from "../Images/backpack.gif"
+import "./login.css"
+import travel from "../../Images/travel.gif"
+import backpack from "../../Images/backpack.gif"
 import { Link } from "react-router-dom"
 import { useLocation, useNavigate } from "react-router-dom";
-import { UseAuth } from "../Context/AuthContext";
-
+import { UseAuth } from "../../Context/AuthContext";
+import profile from "../../Images/resume.png"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function LoginPage(){
-  const {setCredentials, email, setMail, setPassword, password, isAuth, setAuth} = UseAuth()
+  const {setCredentials, email, setMail, setPassword, password, isAuth, setAuth,data} = UseAuth()
   const navigate = useNavigate();
   const location = useLocation();
   const handleClick = (e) => {
@@ -15,6 +18,7 @@ export function LoginPage(){
     
   };
   const logoutClick = () => {
+    toast.error("Logged Out!!!")
     localStorage.removeItem("token");
     setAuth(false);
   }
@@ -31,9 +35,21 @@ export function LoginPage(){
             {isAuth ? (
             <div className="loggedinCard">
                 <div className="profileDetails">
-                    <h1>You have been Logged In!!!</h1>
-                    <h3>You can access Cart, WishList, and more stuff..</h3>
-                    <h3>Click on Logo !!! To Move to HomePage</h3>
+                    <img src={profile} alt="Profile"/>
+                        <div>
+                            <h3>Profile Details</h3>
+                        <div className="checkLine" style={{ marginLeft:"1rem"}}></div>
+                            <ul>
+                                <li>Name:    {data.name}</li>
+                            </ul>
+                            <ul>
+                                <li>Email:    {data.email}</li>
+                            </ul>
+                        <div className="checkLine" style={{ marginLeft:"1rem"}}></div>
+                        </div>
+                    <h2>You have been Logged In!!!</h2>
+                    <h4>You can access Cart, WishList, and more stuff..</h4>
+                    <h4>Click on Logo !!! To Move to HomePage</h4>
                     <button onClick={logoutClick}>Log out</button>
                     
                 </div>

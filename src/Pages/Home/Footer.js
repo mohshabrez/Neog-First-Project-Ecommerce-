@@ -1,8 +1,9 @@
-import github from "../Images/github.png"
-import linkedin from "../Images/linkedin.png"
-import insta from "../Images/insta.png"
-import whtsapp from "../Images/whtsapp.png"
-import twitter from "../Images/twitter.png"
+import "./Home.css"
+import github from "../../Images/github.png"
+import linkedin from "../../Images/linkedin.png"
+import insta from "../../Images/insta.png"
+import whtsapp from "../../Images/whtsapp.png"
+import twitter from "../../Images/twitter.png"
 export function Footer(){
     return(
         <>

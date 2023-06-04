@@ -1,7 +1,8 @@
-import Traveller from "../Images/traveler.gif"
-import passport from "../Images/passport.gif"
+import "./signup.css"
+import Traveller from "../../Images/traveler.gif"
+import passport from "../../Images/passport.gif"
 import {Link} from "react-router-dom"
-import { UseAuth } from "../Context/AuthContext"
+import { UseAuth } from "../../Context/AuthContext"
 
 export function SignUp(){
     const {registerUser, email, password, setMail, setPassword} = UseAuth();    

@@ -1,15 +1,18 @@
 import "./App.css";
-import { HomePage } from "./Pages/HomePage";
-import { ProductPage } from "./Pages/ProductPage";
-import { RootLayout } from "./Pages/RootLayout";
+import { HomePage } from "./Pages/Home/HomePage";
+import { ProductPage } from "./Pages/Product/ProductPage";
+import { RootLayout } from "./Pages/Home/RootLayout";
 import {Routes, Route} from "react-router-dom"
-import { SearchBar } from "./Pages/SearchBar";
-import {CartPage} from "./Pages/CartPage"
-import { Wishlist } from "./Pages/Wishlist";
-import { ProductDetails } from "./Pages/ProductDetails";
-import { LoginPage } from "./Pages/LoginPage";
+import { SearchBar } from "./Pages/Search/SearchBar";
+import {CartPage} from "./Pages/Cart/CartPage"
+import { Wishlist } from "./Pages/Wish/Wishlist";
+import { ProductDetails } from "./Pages/Product/ProductDetails";
+import { LoginPage } from "./Pages/Login/LoginPage";
 import { RequiresAuth } from "./Components/RequiresAuth";
-import { SignUp } from "./Pages/SignUp";
+import { SignUp } from "./Pages/SignUp/SignUp";
+import { CheckBox } from "./Pages/Cart/CheckBox";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -25,7 +28,17 @@ function App() {
           <Route path="productDetails/:productId" element={<ProductDetails/>}/>
           <Route path="login" element={<LoginPage/>}/>
           <Route path="SignUp" element={<SignUp/>}/>
+          <Route path="checkbox" element={<CheckBox/>}/>  
       </Routes>
+      <ToastContainer position='top-center'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover/>
     </div>
      
   );

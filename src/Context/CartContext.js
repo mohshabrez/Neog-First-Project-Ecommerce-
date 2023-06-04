@@ -2,6 +2,9 @@ import { createContext, useContext } from "react"
 import { UseDispatch } from "./CommerceContext"
 import axios from "axios"
 import {ACTIONS} from "../Reducer/CommerceReducer"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import "../App.css"
 
 export const CartContext = createContext()
 
@@ -24,7 +27,9 @@ export function CartProvider({children}){
             }
             
             const response = await axios.post("/api/user/cart", body, config)
-            console.log(response.data.cart)
+            toast.success("Item added in Cart", {
+                theme: 'light'
+            })
             dispatch({
                 type: ACTIONS.ADDTOCART,
                 payLoad: response.data.cart
@@ -52,7 +57,7 @@ export function CartProvider({children}){
                 }
             }
             const response = await axios.post(`/api/user/cart/${cart?._id}`, body, config)
-            console.log(response)
+            toast.info("Item get Incremented")
             dispatch({
                 type: ACTIONS.INCREMENT,
                 payLoad: response.data.cart
@@ -79,6 +84,7 @@ export function CartProvider({children}){
                 }
             }
             const response = await axios.post(`/api/user/cart/${cart?._id}`, body, config)
+            toast.info("Item got Decremented")
             dispatch({
                 type: ACTIONS.DECREMENT,
                 payLoad: response.data.cart

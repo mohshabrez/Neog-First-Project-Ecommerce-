@@ -6,6 +6,7 @@ import { commerceReducer, ACTIONS
 import axios from "axios"
 
 
+
 export const getProducts = async () => {
     const res = await axios.get("/api/products");
     const products = await res.data.products;
@@ -28,10 +29,13 @@ export const getCategories = async () => {
 export function CommerceProvider({children}){
     const[products, setProducts] = useState([])
     const[categories, setCategories] = useState([])
-   
+    const [loadingState, setLoadingState] = useState(false)
+
     useEffect(() => {
         (async () => {
+            
             try {
+                setLoadingState(true)
                 let details = await getProducts()
                 if(details){
                     dispatch({
@@ -40,6 +44,7 @@ export function CommerceProvider({children}){
                     })
                 }
                 setProducts(await getProducts())
+                setLoadingState(false)
             }
 
             catch (e) {
@@ -49,6 +54,7 @@ export function CommerceProvider({children}){
 
         (async () => {
             try {
+                setLoadingState(true)
                 let catdetails = await getCategories()
                 if(catdetails){
                     dispatch({
@@ -57,6 +63,7 @@ export function CommerceProvider({children}){
                     })
                 }
                 setCategories(await getCategories())
+                setLoadingState(false)
             }
 
             catch (e) {
@@ -72,6 +79,7 @@ export function CommerceProvider({children}){
         commerceCategoryData: [],
         ProductsData: [],
         toSort: null,
+        best:null,
         inStock:false,
         DeliveryTime: false,
         bestSellers: false,
@@ -87,7 +95,7 @@ export function CommerceProvider({children}){
     }
     const [state, dispatch] = useReducer(commerceReducer, initialState)
     return(
-        <CommerceContext.Provider value={{state, categories, products}} >
+        <CommerceContext.Provider value={{state, categories, products, loadingState}} >
             <dispatchContext.Provider value={{dispatch}}>
                 {children}
             </dispatchContext.Provider>

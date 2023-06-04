@@ -1,8 +1,9 @@
-import { ProductNavBar } from "./ProductNavBar";
-import {ACTIONS} from "../Reducer/CommerceReducer"
-import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
-import { UseCart } from "../Context/CartContext";
-import { UseAuth } from "../Context/AuthContext";
+import "./product.css"
+import { ProductNavBar } from "../Product/ProductNavBar";
+import {ACTIONS} from "../../Reducer/CommerceReducer"
+import { UseCommerce, UseDispatch } from "../../Context/CommerceContext";
+import { UseCart } from "../../Context/CartContext";
+import { UseAuth } from "../../Context/AuthContext";
 import { useNavigate } from "react-router";
 
 
@@ -34,14 +35,14 @@ export function ProductCard(product){
                 <img src={image} alt="productImage"/>
             </div>
             <div className="details">
-                <h1 style={{fontSize:"270%"}}>WildCraft's {name}</h1>
-                <h3 style={{marginTop:"-20px", color:"rgb(246, 108, 3)", marginLeft:"10px"}}>Brand - {brand}</h3>
-                <h3 style={{marginTop:"-25px", marginLeft:"160px"}}>{star}⭐</h3>
-                <h3 style={{fontSize:"180%", padding:"5px", marginLeft:"-1px"}}>₹{price}</h3>
-                <h3 style={{marginTop:"-41px",marginLeft:"90px", fontSize:"180%", textDecoration:"line-through", color:"grey"}}>₹{originalPrice}</h3>
-                <h3 style={{marginTop:"-37px", marginLeft:"170px", color:"green"}}>({percentage}% OFF)</h3>
-                <p style={{color:"red", marginLeft:"10px"}}>⚡Hurry up, Only Few Left !</p>
-                <div className="checkLine" style={{ width: "104%", marginLeft:"-2.2rem", marginTop:"20px", color:"grey"}}></div>
+                <h1 className="detailTitleH1">WildCraft's {name}</h1>
+                <h3 className="detailbrand" >Brand - {brand}</h3>
+                <h3 className="detailstar" >{star}⭐</h3>
+                <h3 className="detailPrice" >₹{price}</h3>
+                <h3 className="detailOP" >₹{originalPrice}</h3>
+                <h3 className="detailPerc" >({percentage}% OFF)</h3>
+                <p className="detailMsg" >⚡Hurry up, Only Few Left !</p>
+                <div className="checkLine"></div>
                 <div>
                     <p>🔖Fastest Delivery</p>
                     <p>🔖Inclusive of All Taxes</p>

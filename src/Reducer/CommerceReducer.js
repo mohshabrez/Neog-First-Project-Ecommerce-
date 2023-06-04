@@ -28,7 +28,8 @@ export const ACTIONS = {
     USERINITIAL:"userinitial",
     ADDTOCART:"addtocart",
     INCREMENT:"increment",
-    DECREMENT:"decrement"
+    DECREMENT:"decrement",
+    BESTCATEGORY:"bestCategory",
 }
 
 export function commerceReducer(state, action){
@@ -69,10 +70,10 @@ export function commerceReducer(state, action){
         case ACTIONS.DELIVERYTIME:{
             return {...state, DeliveryTime: !state.DeliveryTime}
         }
-        case ACTIONS.BESTSELLERS:{   
+        case ACTIONS.BESTSELLERS:{  
             if(!state.bestSellers){
                 const filteredData = state.ProductsData.filter((product) => product.categoryName === action.payLoad)
-                return {...state, bestSellers: !state.bestSellers, ProductsData:[...filteredData]}
+                return {...state,  bestSellers: !state.bestSellers, ProductsData:[...filteredData]}
             }else{
                 return{...state, ProductsData: [...state.oldData],bestSellers: !state.bestSellers}
             }

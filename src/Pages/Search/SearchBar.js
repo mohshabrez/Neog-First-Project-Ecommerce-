@@ -1,8 +1,10 @@
+import "./search.css"
 import React from "react";
-import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
+import { Link } from "react-router-dom";
+import { UseCommerce, UseDispatch } from "../../Context/CommerceContext";
 import { NavBar } from "./NavBar";
 import {useState} from "react"
-import {ACTIONS} from "../Reducer/CommerceReducer"
+import {ACTIONS} from "../../Reducer/CommerceReducer"
 
 export function SearchBar(){
     const[searchValue, setSearchValue] = useState("")
@@ -31,14 +33,6 @@ export function SearchBar(){
             payLoad: product
         })
     }
-
-    // const AtoWish = (product) => {
-    //     dispatch({
-    //         type:ACTIONS.ADDWISH,
-    //         payLoad: product
-    //     })
-    // }
-
     const favClick = (product) => {
         dispatch({
             type: ACTIONS.ADDWISH,
@@ -55,18 +49,19 @@ export function SearchBar(){
         <NavBar/>
         <div className="searchElements">        
             <div className="bar">
-                <input className="searchpagebar" placeHolder="Search by product Name" onChange={searchBarHandler}/>
+                <input className="searchpagebar" placeHolder="🔍 Search by product Name" onChange={searchBarHandler}/>
                 <button className="searchpagebtn" onClick={()=>searchBtn(searchValue)} >Search</button>
             </div>
-                <h1 style={{marginLeft:"100px"}}>SEARCH RESULT FOR "{searchValue}"</h1>
+                <h1 className="searchHeading">SEARCH RESULT FOR "{searchValue}"</h1>
             <div className="ProductListing">
                 <ul>
-                    <div className="ULProducts" style={{marginTop:"-100px"}}>
+                    <div className="searchULProducts">
                     {state.ProductsData.map((product) => {
                         return(
                             <li key={product?._id}>
-                                <div className="productCard">
-                                    <img src={product?.image} alt="ProductsImages"/>
+                                <div className="searchproductCard">
+                                <Link to={`/productDetails/${product?._id}`}>
+                                    <img src={product?.image} alt="ProductsImages"/></Link>
                                     <div className="productDetails">
                                         <p style={{marginBottom:"-5px", color:"#778899", }}>Brand - {product?.brand}</p>
                                         <h4 style={{fontSize:"larger" ,marginBottom:"28px"}}>{product?.name}</h4>
@@ -75,10 +70,7 @@ export function SearchBar(){
                                         <p className="material-symbols-outlined" onClick={()=>favClick(product)}><svg  xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill={product?.wish ? "rgb(246, 108, 3)" : "#C0C0C0"}  class="bi bi-heart-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                         </svg></p>
-                                        {/* <Link to=""><p className="material-symbols-outlined" onClick={()=>favClick(product)} style={{backgroundColor: product?.wish ? "#6a5acd": "", borderRadius:"50px"}}>favorite</p></Link> */}
-                                        <button className="AtoCart" onClick={()=>AtoCart(product)} style={{backgroundColor:!product.inStock ? "rgb(203, 164, 133)": "rgb(246, 108, 3)" }} disabled={!product.inStock}>Add to Cart</button>
-                                        {/* <button className="Atowish" onClick={()=>AtoWish(product)}>Add to Wishlist</button> */}
-                                        
+                                        <button className="AtoCart" onClick={()=>AtoCart(product)} style={{backgroundColor:!product.inStock ? "rgb(203, 164, 133)": "rgb(246, 108, 3)" }} disabled={!product.inStock}>Add to Cart</button> 
                                         <div className="stocks">
                                              <p style={{color: `${product?.inStock ? "#32cd32": "red"}`}}>{product?.inStock ? "InStock" : "Out Of Stock"}</p>
                                              <p  style={{color: `${product?.deliveryTime ? "red": ""}`, marginTop:"-10px"}}>{product?.deliveryTime ? "Fast Delivery" : ""}</p>

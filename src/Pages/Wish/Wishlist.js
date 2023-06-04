@@ -1,8 +1,11 @@
-import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
-import { ProductNavBar } from "./ProductNavBar";
-import { ACTIONS } from "../Reducer/CommerceReducer";
-import { UseCart } from "../Context/CartContext";
+import "./wish.css"
+import { UseCommerce, UseDispatch } from "../../Context/CommerceContext";
+import { ProductNavBar } from "../Product/ProductNavBar";
+import { ACTIONS } from "../../Reducer/CommerceReducer";
+import { UseCart } from "../../Context/CartContext";
 import { useNavigate } from "react-router";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function Wishlist(){
     const {state} = UseCommerce()
@@ -10,6 +13,7 @@ export function Wishlist(){
     const {addToCartHandler} = UseCart()
     const navigate = useNavigate()
     const removeFromWish = (wishproduct) => {
+        toast.error("Item removed from wishlist")
         dispatch({
             type:ACTIONS.REMOVEFROMWISH,
             payLoad: wishproduct
@@ -18,8 +22,7 @@ export function Wishlist(){
     return(
         <>
         <ProductNavBar/>
-        <div className="WishList">
-            
+        <div className="WishList"> 
             <div className="WishlistItems">
                 {state.wishList && (
                     <>
@@ -42,7 +45,7 @@ export function Wishlist(){
                                 </div>)
                         })}
                     </ul>
-                    ) : <img src="https://th.bing.com/th/id/OIP.gn99fIyj918A9IUVwOiCagAAAA?pid=ImgDet&rs=1" alt="wishlist empty" style={{cursor:"none", caretColor: "transparent"}}/>}
+                    ) : <img className="emptywishImg" src="https://th.bing.com/th/id/OIP.gn99fIyj918A9IUVwOiCagAAAA?pid=ImgDet&rs=1" alt="wishlist empty" style={{cursor:"none", caretColor: "transparent"}}/>}
                     </>
                 )}
             </div>

@@ -1,9 +1,13 @@
-import { UseCommerce, UseDispatch } from "../Context/CommerceContext";
-import { ProductNavBar } from "./ProductNavBar";
-import {ACTIONS} from "../Reducer/CommerceReducer"
-import { UseCart } from "../Context/CartContext";
+import "./Cart.css"
+import "../Product/product.css"
+import { UseCommerce, UseDispatch } from "../../Context/CommerceContext";
+import { ProductNavBar } from "../Product/ProductNavBar";
+import {ACTIONS} from "../../Reducer/CommerceReducer"
+import { UseCart } from "../../Context/CartContext";
 import { useNavigate } from "react-router";
-
+import {Link} from "react-router-dom"
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function CartPage(){
     const {state} = UseCommerce()
@@ -16,12 +20,14 @@ export function CartPage(){
     var DiscountPrice = state.cartItems.reduce((acc, curr) => ((curr.originalPrice - curr.price)*curr.qty) + acc, 0)
 
     const removeFromCart = (cart) => {
+        toast.error("Item removed from cart")
         dispatch({
             type:ACTIONS.REMOVEFROMCART,
             payLoad: cart
         })
     }
     const moveCartToWish = (cart) => {
+        toast.warning("Item added to Wishlist")
         dispatch({
             type:ACTIONS.ADDWISH,
             payLoad:cart
@@ -68,7 +74,7 @@ export function CartPage(){
                     )
                 })}
             </ul>
-            ): (<img src="https://cdni.iconscout.com/illustration/premium/preview/empty-cart-2130356-1800917.png?w=0&h=1400" alt="empty cart" style={{width:"40rem", cursor:"none"}}/>)}
+            ): (<img src="https://cdni.iconscout.com/illustration/premium/preview/empty-cart-2130356-1800917.png?w=0&h=1400" alt="empty cart" className="emptyCart"/>)}
             {state.cartItems.length > 0 ?  (
                 <div className="checkoutBox">
                 <h2>Price Details</h2>
@@ -80,7 +86,7 @@ export function CartPage(){
                 </ul>
                 <ul>
                     <li>Discount</li>
-                    <li style={{marginLeft:"-1.6rem"}}>{DiscountPrice}</li>
+                    <li style={{marginLeft:"-1.6rem"}}>-{DiscountPrice}</li>
                 </ul>
                 <ul>
                     <li>Delivery Charges</li>
@@ -92,13 +98,13 @@ export function CartPage(){
                     <li style={{marginLeft:"-2.3rem"}}><h3>₹{TotalPrice}</h3></li>
                 </ul>
                 <div className="checkLine" style={{ width: "130%", marginLeft:"-2.2rem"}}></div>
-                <p style={{fontWeight:"bold"}}>You will save ₹{DiscountPrice} on this order </p>
-                <button className="checkOut">Check Out</button>
+                <p style={{fontWeight:"bold", color:"green"}}>You will save ₹{DiscountPrice} on this order </p>
+                <Link to="/checkbox"><button className="checkOut">Check Out</button></Link>
             </div>
             </div>
 
             ) : (
-            <h1 style={{fontSize:"500%"}}>Your cart is Empty</h1>)}
+            <h1 className="emptyCartTitle">Your cart is Empty</h1>)}
             
 </div>
 </div>

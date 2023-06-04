@@ -1,6 +1,7 @@
+import "./product.css"
 import {useParams} from "react-router-dom"
-import { UseCommerce } from "../Context/CommerceContext"
-import { ProductCard } from "./ProductCard";
+import { UseCommerce } from "../../Context/CommerceContext"
+import { ProductCard } from "../Product/ProductCard";
 
 export function ProductDetails(){
     const {productId} = useParams()
